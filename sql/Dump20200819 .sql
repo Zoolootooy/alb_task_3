@@ -27,26 +27,17 @@ CREATE TABLE `answer` (
   `text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `length` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6603 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `answer`
+-- Table structure for table `answerQuestion`
 --
 
-LOCK TABLES `answer` WRITE;
-/*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `answer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `answer-question`
---
-
-DROP TABLE IF EXISTS `answer-question`;
+DROP TABLE IF EXISTS `answerQuestion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `answer-question` (
+CREATE TABLE `answerQuestion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAnswer` int(11) NOT NULL,
   `idQuestion` int(11) NOT NULL,
@@ -55,17 +46,8 @@ CREATE TABLE `answer-question` (
   KEY `idQuestion` (`idQuestion`),
   CONSTRAINT `idAnswer` FOREIGN KEY (`idAnswer`) REFERENCES `answer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `idQuestion` FOREIGN KEY (`idQuestion`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7625 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `answer-question`
---
-
-LOCK TABLES `answer-question` WRITE;
-/*!40000 ALTER TABLE `answer-question` DISABLE KEYS */;
-/*!40000 ALTER TABLE `answer-question` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `question`
@@ -78,17 +60,8 @@ CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3759 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `question`
---
-
-LOCK TABLES `question` WRITE;
-/*!40000 ALTER TABLE `question` DISABLE KEYS */;
-/*!40000 ALTER TABLE `question` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -99,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-12 11:30:38
+-- Dump completed on 2020-08-19 16:53:11
