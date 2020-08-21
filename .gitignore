@@ -1,8 +1,6 @@
 .idea/
 src/vendor/
 src/app/config/database_config.php
-src/app/config/proxy_config.php
 src/app/config/redis_config.php
 
 examples/
-

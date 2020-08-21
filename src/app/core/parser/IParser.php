@@ -9,5 +9,5 @@ use GuzzleHttp\Client;
 
 interface IParser
 {
-    public function parse($uri, Client  $client);
+    public function parse($uri, Client $client);
 }

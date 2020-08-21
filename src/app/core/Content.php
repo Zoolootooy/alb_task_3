@@ -9,6 +9,10 @@ use GuzzleHttp\Exception\RequestException;
 use app\models\DataCache;
 use function GuzzleHttp\json_decode;
 
+/**
+ * Class Content.
+ * @package app\core
+ */
 class Content
 {
     private $proxy;
@@ -29,12 +33,12 @@ class Content
         try {
             $content = $client->get($link, ['proxy' => $proxy])->getBody()->getContents();
             $this->proxy->pushProxy($proxy);
-            error_log("[" . date("j F Y G:i:s") . "]Successfully parse: " . ROOT . $link . "\n", 3,
-                __DIR__ . "/../logs/logfile.log");
+            error_log("[" . date("j F Y G:i:s") . "] Successfully parse: " . ROOT . $link . "\n", 3,
+                __DIR__ . "/../../logs/logfile.log");
             return new Document($content);
         } catch (RequestException $e) {
             error_log("[" . date("j F Y G:i:s") . "] Failed to parse: " . ROOT . $link . "\n", 3,
-                __DIR__ . "/../logs/logfile.log");
+                __DIR__ . "/../../logs/logfile.log");
             return false;
         }
     }
@@ -48,11 +52,12 @@ class Content
     {
         try {
             $content = json_decode($link, true);
-            error_log("[" . date("j F Y G:i:s") . "] Proxy list successfully received \n", 3,
-                __DIR__ . "/../logs/logfile.log");
+            error_log("[" . date("j F Y G:i:s") . "] Proxy list received successfully \n", 3,
+                __DIR__ . "/../../logs/logfile.log");
             return $content;
         } catch (RequestException $e) {
-            error_log("[" . date("j F Y G:i:s") . "] Failed to get proxy list \n", 3, __DIR__ . "/../logs/logfile.log");
+            error_log("[" . date("j F Y G:i:s") . "] Failed to get proxy list \n", 3,
+                __DIR__ . "/../../logs/logfile.log");
             sleep(20);
             return false;
         }

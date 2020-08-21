@@ -4,6 +4,11 @@ namespace app\core;
 
 use PDO;
 
+/**
+ * Class Database.
+ * Works with Mysql database.
+ * @package app\core
+ */
 class Database
 {
     private static $pdo;
@@ -11,6 +16,9 @@ class Database
     private $bConnected = false;
     private $parameters;
 
+    /**
+     * Database constructor.
+     */
     public function __construct()
     {
         $config = require __DIR__ . '/../config/database_config.php';

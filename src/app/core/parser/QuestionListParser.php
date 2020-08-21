@@ -7,13 +7,18 @@ use app\core\Content;
 use app\models\DataCache;
 use GuzzleHttp\Client;
 
-class LetterParser implements IParser
+/**
+ * Class QuestionListParser.
+ * Works with "question-list"-pages; cache links to question-pages.
+ * @package app\core\parser
+ */
+class QuestionListParser implements IParser
 {
     private $content;
     private $dataCache;
 
     /**
-     * LetterParser constructor.
+     * QuestionListParser constructor.
      */
     public function __construct()
     {
@@ -30,9 +35,14 @@ class LetterParser implements IParser
     {
         $document = $this->content->getContent($uri, $client);
         if ($document != false) {
-            $data = $document->find('ul.dnrg li a');
+            $data = $document->find('.Question a');
+            $questionsLinks = [];
             foreach ($data as $a) {
-                $this->dataCache->cacheLink('q', $a->attr('href'));
+                $questionsLinks[] = $a->attr('href');
+            }
+            $questionsLinks = array_unique($questionsLinks);
+            foreach ($questionsLinks as $link) {
+                $this->dataCache->cacheLink('qPage', $link);
             }
             return true;
         } else {

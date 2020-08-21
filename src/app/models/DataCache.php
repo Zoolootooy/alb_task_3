@@ -2,6 +2,11 @@
 
 namespace app\models;
 
+/**
+ * Class DataCache.
+ * Works with redis, cache and returns proxy, links.
+ * @package app\models
+ */
 class DataCache
 {
     private $redis;
@@ -17,6 +22,7 @@ class DataCache
     }
 
     /**
+     * Cache proxy.
      * @param $proxy
      */
     public function cacheProxy($proxy)
@@ -26,6 +32,7 @@ class DataCache
     }
 
     /**
+     * Return proxy-address
      * @return mixed
      */
     public function getProxy()
@@ -35,32 +42,25 @@ class DataCache
     }
 
     /**
+     * Cache link.
      * @param $type
      * @param $link
      */
     public function cacheLink($type, $link)
     {
-        $typeLink = $type . '>' . $link;
+        $typeLink = $type . '~' . $link;
         $this->redis->connect($this->config['host'], $this->config['port']);
         $this->redis->rPush('link', $typeLink);
     }
 
     /**
+     * Return link.
      * @return mixed
      */
     public function getLink()
     {
         $this->redis->connect($this->config['host'], $this->config['port']);
         return $this->redis->rPop('link');
-    }
-
-    /**
-     * @param $name
-     */
-    public function show($name)
-    {
-        $this->redis->connect($this->config['host'], $this->config['port']);
-        print_r($this->redis->lRange($name, 0, -1));
     }
 
     /**

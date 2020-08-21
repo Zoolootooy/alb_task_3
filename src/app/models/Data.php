@@ -4,6 +4,11 @@ namespace app\models;
 
 use app\core\Database;
 
+/**
+ * Class Data.
+ * Works with database, check and save data.
+ * @package app\models
+ */
 class Data
 {
     private $conn;
@@ -18,7 +23,7 @@ class Data
     }
 
     /**
-     * Checking the question for existence
+     * checking the existence of a question.
      * @param string $question
      * @return int|null
      */
@@ -28,9 +33,9 @@ class Data
     }
 
     /**
-     * Saving the question
+     * Saving the question; return inserted ID or false.
      * @param string $question
-     * @return bool|int
+     * @return false|int
      */
     public function saveQue($question)
     {
@@ -48,7 +53,7 @@ class Data
     }
 
     /**
-     * Checking the answer for existence
+     * checking the existence of an answer.
      * @param string $answer
      * @return int|null
      */
@@ -58,7 +63,7 @@ class Data
     }
 
     /**
-     * Saving the answer
+     * Saving the answer; return inserted ID or false.
      * @param string $answer
      * @param int $length
      * @return bool|int
@@ -79,7 +84,7 @@ class Data
     }
 
     /**
-     * Checking a question for an answer
+     * Checking the existence of an answer to a questionю
      * @param int $idQue
      * @param int $idAns
      * @return int|null
@@ -91,7 +96,7 @@ class Data
     }
 
     /**
-     * Saving answer on the question
+     * Saving answer on the question.
      * @param int $idQue
      * @param int $idAns
      */

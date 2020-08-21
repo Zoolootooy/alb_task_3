@@ -7,14 +7,18 @@ use app\core\Content;
 use app\models\Data;
 use GuzzleHttp\Client;
 
-class AnswerParser implements IParser
+/**
+ * Class QuestionPageParser.
+ * Works with question page; saves question's text, answer's text, length; saves answers on this question.
+ * @package app\core\parser
+ */
+class QuestionPageParser implements IParser
 {
-
     private $content;
     private $model;
 
     /**
-     * AnswerParser constructor.
+     * QuestionPageParser constructor.
      */
     public function __construct()
     {

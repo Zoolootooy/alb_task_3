@@ -12,10 +12,7 @@
   "autoload": {
     "psr-4": {
       "app\\": "app/"
-    },
-    "files": [
-      "helpers.php"
-    ]
+    }
   },
   "config": {
     "disable-tls": true,

@@ -7,21 +7,31 @@ use app\models\DataCache;
 use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
 
+/**
+ * Class Proxy.
+ * Works with proxy-addresses, proxy-lists.
+ * @package app\core
+ */
 class Proxy
 {
     private $client;
     private $dataCache;
 
+    /**
+     * Proxy constructor.
+     */
     public function __construct()
     {
         $this->client = new Client(OPTION);
         $this->dataCache = new DataCache();
     }
 
-
+    /**
+     * Creates new proxy-list.
+     */
     public function newProxyList()
     {
-        $config = file_get_contents(__DIR__ .'/../config/proxy.json');
+        $config = file_get_contents(__DIR__ . '/../config/proxy.json');
         $proxyList = false;
         while ($proxyList == false) {
             $proxyList = Content::getProxyContent($config, $this->client);
@@ -33,6 +43,7 @@ class Proxy
     }
 
     /**
+     * Checking proxy for availability.
      * @param string $ip
      * @param string $port
      * @return bool
@@ -50,6 +61,7 @@ class Proxy
     }
 
     /**
+     * Get proxy-address from proxy-list.
      * @return string
      */
     public function getProxy()
@@ -60,8 +72,8 @@ class Proxy
             $proxiesExit = $this->dataCache->getProxy();
         }
         $proxy = explode(':', $proxiesExit);
-        while (self::checkProxy($proxy['ip'], $proxy['port'])){
-            if ($proxiesExit == false){
+        while (self::checkProxy($proxy['ip'], $proxy['port'])) {
+            if ($proxiesExit == false) {
                 self::newProxyList();
                 $proxiesExit = $this->dataCache->getProxy();
             }
