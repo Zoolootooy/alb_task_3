@@ -5,7 +5,6 @@ namespace app\core;
 
 use app\models\DataCache;
 use GuzzleHttp\Client;
-use function GuzzleHttp\json_decode;
 
 /**
  * Class Proxy.

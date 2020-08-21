@@ -23,7 +23,7 @@ class Data
     }
 
     /**
-     * checking the existence of a question.
+     * Checking the existence of a question.
      * @param string $question
      * @return int|null
      */
@@ -53,7 +53,7 @@ class Data
     }
 
     /**
-     * checking the existence of an answer.
+     * Checking the existence of an answer.
      * @param string $answer
      * @return int|null
      */
@@ -84,7 +84,7 @@ class Data
     }
 
     /**
-     * Checking the existence of an answer to a questionю
+     * Checking the existence of an answer to a question.
      * @param int $idQue
      * @param int $idAns
      * @return int|null

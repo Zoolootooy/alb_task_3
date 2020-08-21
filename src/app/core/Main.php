@@ -10,7 +10,7 @@ use app\models\DataCache;
 use GuzzleHttp\Client;
 
 /**
- * Class Main
+ * Class Main.
  * @package app\core
  */
 class Main
@@ -43,7 +43,7 @@ class Main
     }
 
     /**
-     * Parser's start point
+     * Parser's start point.
      */
     public function start()
     {

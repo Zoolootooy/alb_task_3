@@ -4,3 +4,4 @@ src/app/config/database_config.php
 src/app/config/redis_config.php
 
 examples/
+src/logs/logfile.log
